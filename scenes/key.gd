@@ -6,7 +6,7 @@ extends Node2D
 @onready var did_i_win_or_lose: Label = %DidIWinOrLose
 
 func _process(delta):
-	if Input.is_action_pressed("pull"):
+	if Input.is_action_just_pressed("pull"):
 		player_pull(player_pull_force)
 	
 	boss_pull(boss_pull_force)
