@@ -7,12 +7,15 @@ extends Node2D
 
 func _process(delta):
 	if Input.is_action_pressed("pull"):
-		position.x -= player_pull_force
-		
-	position.x += boss_pull_force
+		player_pull(player_pull_force)
+	
+	boss_pull(boss_pull_force)
 	
 func boss_pull(force):
 	position.x += force
+
+func player_pull(force):
+	position.x -= player_pull_force
 
 func _on_win(area: Area2D) -> void:
 	did_i_win_or_lose.text = "You win!" 
