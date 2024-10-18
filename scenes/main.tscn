@@ -1,9 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=8 format=3 uid="uid://cfjit7ema1pr0"]
+
+[ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
 
 [sub_resource type="Gradient" id="Gradient_3l363"]
+offsets = PackedFloat32Array(0, 0.571429, 1)
+colors = PackedColorArray(0, 0.517647, 0, 1, 0.675325, 0.675325, 0.675325, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3tbwp"]
 gradient = SubResource("Gradient_3l363")
+
+[sub_resource type="Gradient" id="Gradient_20k1u"]
+colors = PackedColorArray(1, 0.137255, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_scwlu"]
+gradient = SubResource("Gradient_20k1u")
+
+[sub_resource type="Gradient" id="Gradient_6dqa4"]
+colors = PackedColorArray(0.805694, 0.727546, 0.0751199, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rlxgx"]
+gradient = SubResource("Gradient_6dqa4")
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,7 +31,8 @@ position = Vector2(277, 353)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(-1, 66.5)
+position = Vector2(12.9631, 3.36738)
+scale = Vector2(-0.477802, 284.258)
 texture = SubResource("GradientTexture1D_3tbwp")
 
 [node name="Boss" type="Node2D" parent="."]
@@ -24,5 +41,14 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2DBoss" type="Sprite2D" parent="Boss"]
 rotation = 3.14159
-scale = Vector2(1, -66.5)
-texture = SubResource("GradientTexture1D_3tbwp")
+scale = Vector2(0.491385, -290.992)
+texture = SubResource("GradientTexture1D_scwlu")
+
+[node name="Key" type="Node2D" parent="."]
+position = Vector2(575, 353)
+script = ExtResource("1_flnan")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Key"]
+scale = Vector2(-0.078125, 54.5)
+texture = SubResource("GradientTexture1D_rlxgx")
