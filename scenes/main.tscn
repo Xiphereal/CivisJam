@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=11 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
 
@@ -26,6 +26,9 @@ gradient = SubResource("Gradient_6dqa4")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7n2f"]
 size = Vector2(20, 54)
+
+[sub_resource type="LabelSettings" id="LabelSettings_umco7"]
+font_size = 56
 
 [node name="Node2D" type="Node2D"]
 
@@ -78,6 +81,35 @@ texture = SubResource("GradientTexture1D_rlxgx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Key/Area2D"]
 shape = SubResource("RectangleShape2D_t7n2f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="DidIWinOrLose" type="Label" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -106.0
+offset_right = 45.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_umco7")
 
 [connection signal="area_entered" from="Player/WinArea" to="Key" method="_on_win"]
 [connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
