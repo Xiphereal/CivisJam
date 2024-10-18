@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=13 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
 [ext_resource type="Script" path="res://scenes/suddent_pull_timer.gd" id="1_psoe2"]
+[ext_resource type="AudioStream" uid="uid://l6lntkmm5vy5" path="res://audio/BOSS FIGHT.wav" id="3_5jvhv"]
 
 [sub_resource type="Gradient" id="Gradient_3l363"]
 offsets = PackedFloat32Array(0, 0.571429, 1)
@@ -117,6 +118,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 label_settings = SubResource("LabelSettings_umco7")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5jvhv")
+autoplay = true
 
 [connection signal="area_entered" from="Player/WinArea" to="Key" method="_on_win"]
 [connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
