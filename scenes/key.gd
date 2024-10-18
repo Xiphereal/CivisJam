@@ -19,10 +19,12 @@ func player_pull(force):
 
 func _on_win(area: Area2D) -> void:
 	did_i_win_or_lose.text = "You win!" 
-	player_pull_force = 0
-	boss_pull_force = 0
+	_reach_end_game()
 
 func _on_defeat(area: Area2D) -> void:
 	did_i_win_or_lose.text = "You lose..." 
+	_reach_end_game()
+	
+func _reach_end_game():
 	player_pull_force = 0
 	boss_pull_force = 0
