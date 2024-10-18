@@ -6,12 +6,12 @@ extends Timer
 @export var min_force = 10
 @export var max_force = 30
 
-const _KICK = preload("res://audio/KICK.wav")
+const _PULL = preload("res://audio/PULL.wav")
 
 func _on_timeout() -> void:
 	%Key.boss_pull(randi_range(min_force, max_force))
 	
-	%SFX.stream = _KICK
+	%SFX.stream = _PULL
 	%SFX.play()
 	
 	change_timer_randomly()
