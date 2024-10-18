@@ -72,6 +72,8 @@ shape = SubResource("RectangleShape2D_tutl4")
 [node name="SuddentPull" type="Timer" parent="Boss"]
 autostart = true
 script = ExtResource("1_psoe2")
+min_force = 30
+max_force = 60
 
 [node name="Key" type="Node2D" parent="."]
 unique_name_in_owner = true
