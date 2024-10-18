@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=10 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
 
@@ -8,6 +8,9 @@ colors = PackedColorArray(0, 0.517647, 0, 1, 0.675325, 0.675325, 0.675325, 1, 1,
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3tbwp"]
 gradient = SubResource("Gradient_3l363")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
+size = Vector2(101, 584)
 
 [sub_resource type="Gradient" id="Gradient_20k1u"]
 colors = PackedColorArray(1, 0.137255, 0, 1, 1, 1, 1, 1)
@@ -20,6 +23,9 @@ colors = PackedColorArray(0.805694, 0.727546, 0.0751199, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_rlxgx"]
 gradient = SubResource("Gradient_6dqa4")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7n2f"]
+size = Vector2(20, 54)
 
 [node name="Node2D" type="Node2D"]
 
@@ -35,6 +41,13 @@ position = Vector2(12.9631, 3.36738)
 scale = Vector2(-0.477802, 284.258)
 texture = SubResource("GradientTexture1D_3tbwp")
 
+[node name="WinArea" type="Area2D" parent="Player"]
+position = Vector2(-75, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/WinArea"]
+position = Vector2(88, -38)
+shape = SubResource("RectangleShape2D_tutl4")
+
 [node name="Boss" type="Node2D" parent="."]
 position = Vector2(857, 353)
 metadata/_edit_group_ = true
@@ -44,11 +57,27 @@ rotation = 3.14159
 scale = Vector2(0.491385, -290.992)
 texture = SubResource("GradientTexture1D_scwlu")
 
+[node name="DefeatArea" type="Area2D" parent="Boss"]
+position = Vector2(-87, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/DefeatArea"]
+position = Vector2(88, -38)
+shape = SubResource("RectangleShape2D_tutl4")
+
 [node name="Key" type="Node2D" parent="."]
 position = Vector2(575, 353)
 script = ExtResource("1_flnan")
+player_pull_force = 10
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Key"]
 scale = Vector2(-0.078125, 54.5)
 texture = SubResource("GradientTexture1D_rlxgx")
+
+[node name="Area2D" type="Area2D" parent="Key"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key/Area2D"]
+shape = SubResource("RectangleShape2D_t7n2f")
+
+[connection signal="area_entered" from="Player/WinArea" to="Key" method="_on_win"]
+[connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
