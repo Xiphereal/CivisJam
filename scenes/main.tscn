@@ -76,7 +76,7 @@ script = ExtResource("1_psoe2")
 unique_name_in_owner = true
 position = Vector2(575, 353)
 script = ExtResource("1_flnan")
-player_pull_force = 25
+player_pull_force = 30
 boss_pull_force = 2
 metadata/_edit_group_ = true
 
