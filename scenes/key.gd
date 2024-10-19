@@ -16,7 +16,7 @@ const YOULOSE = preload("res://audio/YOULOSE.wav")
 const YOUWIN = preload("res://audio/YOUWIN.wav")
 
 func _process(delta):
-	%Stamina.text=str(stamina)
+	%Stamina.value=stamina
 	if Input.is_action_just_pressed("pull"):
 		if stamina > 0:
 			player_pull(player_pull_force)

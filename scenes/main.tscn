@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=12 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -17,22 +17,10 @@ size = Vector2(20, 54)
 [sub_resource type="LabelSettings" id="LabelSettings_umco7"]
 font_size = 56
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cplf"]
+bg_color = Color(1.58831e-06, 0.727682, 0.0957549, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1375.0
-offset_top = -699.0
-offset_right = 2465.0
-offset_bottom = 1461.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_5j8mf")
+[node name="Node2D" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
 scale = Vector2(0.516667, 0.516667)
@@ -80,7 +68,6 @@ min_force = 35
 max_force = 60
 
 [node name="StaminaBoost" type="Timer" parent="Boss"]
-wait_time = 0.5
 autostart = true
 
 [node name="Key" type="Node2D" parent="."]
@@ -130,24 +117,15 @@ grow_vertical = 2
 size_flags_horizontal = 4
 label_settings = SubResource("LabelSettings_umco7")
 
-[node name="Stamina" type="Label" parent="CanvasLayer/Control"]
+[node name="Stamina" type="ProgressBar" parent="CanvasLayer/Control"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = -129.0
-offset_right = 41.0
-offset_bottom = -52.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 6
-text = "100"
-label_settings = SubResource("LabelSettings_umco7")
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 0
+offset_right = 357.0
+offset_bottom = 59.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_0cplf")
+value = 50.0
+show_percentage = false
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
