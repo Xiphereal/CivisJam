@@ -31,26 +31,34 @@ const sfx_array := [KEYS1, KEYS2, KEYSPULL, KEYSSWING]
 var current_stream = sfx_array[0]
 
 var pressed := false
-
+var holding := pressed and hold_stamina > 0
 
 func _process(delta):
 	%Stamina.value=stamina
 	if Input.is_action_just_pressed("pull"):
-		if stamina > 0:
-			player_pull(player_pull_force)
-			stamina -= stamina_loss_per_click
-		
-		if randi_range(0, 1) > 0.9:
-			current_stream = sfx_array[randi_range(min, max)]
-			%SFX.stream = current_stream
-			%SFX.pitch_scale = randi_range(1, 10)
-			%SFX.play()
-			%SFX.pitch_scale = 1
+		_update_stamina()
+		_play_sfx()
 			
 	_update_hold_stamina()
-
+	_update_holding()
 	_boss_constant_pull(delta)
 	
+func _play_sfx():
+	if randi_range(0, 1) > 0.9:
+		current_stream = sfx_array[randi_range(min, max)]
+		%SFX.stream = current_stream
+		%SFX.pitch_scale = randi_range(1, 10)
+		%SFX.play()
+		%SFX.pitch_scale = 1
+			
+func _update_holding():
+	holding = pressed and hold_stamina > 0
+	
+func _update_stamina():
+	if stamina > 0:
+		player_pull(player_pull_force)
+		stamina -= stamina_loss_per_click
+
 func _update_hold_stamina():
 	if Input.is_action_just_pressed("pull"):
 		pressed = true

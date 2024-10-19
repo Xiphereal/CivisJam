@@ -9,12 +9,13 @@ extends Timer
 const _PULL = preload("res://audio/PULL.wav")
 
 func _on_timeout() -> void:
-	%Key.boss_pull(randi_range(min_force, max_force))
+	if !%Key.holding:
+		%Key.boss_pull(randi_range(min_force, max_force))
 	
-	%SFX.stream = _PULL
-	%SFX.play()
+		%SFX.stream = _PULL
+		%SFX.play()
 	
-	%Camera.initiate_shake(1)
+		%Camera.initiate_shake(1)
 	
 	change_timer_randomly()
 	
