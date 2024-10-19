@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scenes/hold_bar.gd" id="9_yf12d"]
 [ext_resource type="Script" path="res://scenes/boss_exhaust.gd" id="10_qfkqb"]
 [ext_resource type="Script" path="res://scenes/sudden_pull.gd" id="10_s7g2n"]
+[ext_resource type="Script" path="res://scenes/did_i_win_or_lose.gd" id="13_tykf0"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fa1x2"]
 particle_flag_disable_z = true
@@ -35,9 +36,6 @@ size = Vector2(20, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0lun"]
 size = Vector2(172.807, 645.175)
-
-[sub_resource type="LabelSettings" id="LabelSettings_umco7"]
-font_size = 56
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cplf"]
 bg_color = Color(1.58831e-06, 0.727682, 0.0957549, 1)
@@ -169,23 +167,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="DidIWinOrLose" type="Label" parent="CanvasLayer/Control"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -106.0
-offset_right = 45.0
-offset_bottom = -83.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_umco7")
-
 [node name="Stamina" type="ProgressBar" parent="CanvasLayer/Control"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
@@ -238,6 +219,24 @@ value = 4.0
 show_percentage = false
 script = ExtResource("10_s7g2n")
 
+[node name="DidIWinOrLose" type="Button" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00520833
+anchor_top = -0.00925926
+anchor_right = 1.00521
+anchor_bottom = 0.990741
+offset_left = -10.0
+offset_top = 10.0
+offset_right = -2.00012
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_tykf0")
+metadata/_edit_use_anchors_ = true
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_5jvhv")
@@ -251,3 +250,4 @@ unique_name_in_owner = true
 [connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
 [connection signal="timeout" from="Boss/SuddentPull" to="Boss/SuddentPull" method="_on_timeout"]
 [connection signal="timeout" from="Boss/BossExhaust" to="Key" method="_on_boss_force_loss_timeout"]
+[connection signal="pressed" from="CanvasLayer/Control/DidIWinOrLose" to="CanvasLayer/Control/DidIWinOrLose" method="_on_pressed"]

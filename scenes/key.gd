@@ -11,7 +11,7 @@ extends Node2D
 
 @onready var hold_stamina := 100
 
-@onready var did_i_win_or_lose: Label = %DidIWinOrLose
+@onready var did_i_win_or_lose: Button = %DidIWinOrLose
 
 const YOULOSE = preload("res://audio/YOULOSE.wav")
 const YOUWIN = preload("res://audio/YOUWIN.wav")
@@ -82,13 +82,13 @@ func _boss_constant_pull(delta):
 	boss_pull(boss_pull_force * boss_distance_force * delta)
 
 func _on_win(area: Area2D) -> void:
-	did_i_win_or_lose.text = "You win!" 
+	did_i_win_or_lose.win()
 	_reach_end_game()
 	%Music.stream = YOUWIN
 	%Music.play()
 
 func _on_defeat(area: Area2D) -> void:
-	did_i_win_or_lose.text = "You lose..." 
+	did_i_win_or_lose.lose()
 	_reach_end_game()
 	%Music.stream = YOULOSE
 	%Music.play()
