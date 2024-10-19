@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=18 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -124,10 +124,6 @@ autostart = true
 script = ExtResource("1_psoe2")
 min_force = 35
 max_force = 60
-
-[node name="SFXPPlay" type="Timer" parent="Boss"]
-autostart = true
-script = ExtResource("5_2mrmh")
 
 [node name="BossExhaust" type="Timer" parent="Boss"]
 unique_name_in_owner = true
