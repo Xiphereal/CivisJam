@@ -31,7 +31,7 @@ gravity = Vector3(0, 98, 0)
 linear_accel_min = -12.9
 linear_accel_max = 16.13
 scale_min = 0.01
-scale_max = 0.5
+scale_max = 0.3
 
 [sub_resource type="LabelSettings" id="LabelSettings_umco7"]
 font_size = 56
@@ -132,12 +132,13 @@ one_shot = true
 autostart = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
+z_index = 1
 position = Vector2(0, -911)
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_fa1x2")
 texture = ExtResource("5_ecji2")
 lifetime = 5.0
+visibility_rect = Rect2(-2322.7, -841.658, 4638.97, 4600.25)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -204,5 +205,4 @@ unique_name_in_owner = true
 [connection signal="timeout" from="Player/StaminaBoost" to="Key" method="_on_stamina_boost_timeout"]
 [connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
 [connection signal="timeout" from="Boss/SuddentPull" to="Boss/SuddentPull" method="_on_timeout"]
-[connection signal="timeout" from="Boss/SFXPPlay" to="Boss/SFXPPlay" method="_on_timeout"]
 [connection signal="timeout" from="Boss/BossExhaust" to="Key" method="_on_boss_force_loss_timeout"]
