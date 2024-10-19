@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=27 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -34,6 +34,44 @@ size = Vector2(56.518, 584)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7n2f"]
 size = Vector2(20, 54)
+
+[sub_resource type="Animation" id="Animation_0ebb0"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DBoss:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.46667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.164001]
+}
+
+[sub_resource type="Animation" id="Animation_auxwn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DBoss:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gf0cc"]
+_data = {
+"RESET": SubResource("Animation_auxwn"),
+"idle": SubResource("Animation_0ebb0")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0lun"]
 size = Vector2(172.807, 645.175)
@@ -133,8 +171,16 @@ scale = Vector2(2.28, 2.28)
 metadata/_edit_group_ = true
 
 [node name="Sprite2DBoss" type="Sprite2D" parent="Boss"]
+position = Vector2(-111.842, -17.1053)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_0aigi")
+offset = Vector2(447.368, 68.4211)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Boss"]
+libraries = {
+"": SubResource("AnimationLibrary_gf0cc")
+}
+autoplay = "idle"
 
 [node name="DefeatArea" type="Area2D" parent="Boss"]
 position = Vector2(-87, 25)
