@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cddxoce0awp12"
+path="res://.godot/imported/KEYS SWING.wav-81c7a94721f8e8dea42c07d8f63dd831.sample"
+
+[deps]
+
+source_file="res://audio/KEYS SWING.wav"
+dest_files=["res://.godot/imported/KEYS SWING.wav-81c7a94721f8e8dea42c07d8f63dd831.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
