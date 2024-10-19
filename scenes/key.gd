@@ -9,6 +9,8 @@ extends Node2D
 @export var stamina_gain = 30
 @export var stamina_loss_per_click = 10
 
+@onready var hold_stamina := 100
+
 @onready var did_i_win_or_lose: Label = %DidIWinOrLose
 
 const YOULOSE = preload("res://audio/YOULOSE.wav")
@@ -28,10 +30,14 @@ const sfx_array := [KEYS1, KEYS2, KEYSPULL, KEYSSWING]
 
 var current_stream = sfx_array[0]
 
+var pressed := false
+
 
 func _process(delta):
 	%Stamina.value=stamina
 	if Input.is_action_just_pressed("pull"):
+		pressed = true
+
 		if stamina > 0:
 			player_pull(player_pull_force)
 			stamina -= stamina_loss_per_click
@@ -43,6 +49,12 @@ func _process(delta):
 			%SFX.play()
 			%SFX.pitch_scale = 1
 			
+	if Input.is_action_just_released("pull"):
+		pressed = false
+		
+	if pressed:
+		hold_stamina -= 1
+
 	_boss_constant_pull(delta)
 	
 func boss_pull(force):
