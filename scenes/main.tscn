@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=14 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://p26qyddk35y6" path="res://art/boss.png" id="2_0aigi"]
 [ext_resource type="AudioStream" uid="uid://l6lntkmm5vy5" path="res://audio/BOSS FIGHT.wav" id="3_5jvhv"]
 [ext_resource type="Texture2D" uid="uid://ce71up5nhrn8n" path="res://art/rope.png" id="3_kwbbp"]
-[ext_resource type="Script" path="res://scenes/sfxp_play.gd" id="5_2mrmh"]
 [ext_resource type="Texture2D" uid="uid://5o8miop8gg2g" path="res://art/keys.png" id="5_ecji2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
@@ -126,10 +125,6 @@ script = ExtResource("1_psoe2")
 min_force = 35
 max_force = 60
 
-[node name="SFXPPlay" type="Timer" parent="Boss"]
-autostart = true
-script = ExtResource("5_2mrmh")
-
 [node name="BossForceLoss" type="Timer" parent="Boss"]
 wait_time = 15.0
 one_shot = true
@@ -186,5 +181,4 @@ unique_name_in_owner = true
 [connection signal="timeout" from="Player/StaminaBoost" to="Key" method="_on_stamina_boost_timeout"]
 [connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
 [connection signal="timeout" from="Boss/SuddentPull" to="Boss/SuddentPull" method="_on_timeout"]
-[connection signal="timeout" from="Boss/SFXPPlay" to="Boss/SFXPPlay" method="_on_timeout"]
 [connection signal="timeout" from="Boss/BossForceLoss" to="Key" method="_on_boss_force_loss_timeout"]
