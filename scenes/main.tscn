@@ -80,13 +80,13 @@ position = Vector2(0, 198)
 scale = Vector2(0.199999, 0.199999)
 
 [node name="Sprite" type="Sprite2D" parent="Rope"]
-position = Vector2(-141.508, 0)
-scale = Vector2(3.347, 0.75)
+position = Vector2(-800.004, -18.75)
+scale = Vector2(2.66147, 0.975003)
 texture = ExtResource("3_kwbbp")
 
 [node name="Key" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-48, 262)
+position = Vector2(-48, 239)
 scale = Vector2(3.10714, 3.10714)
 script = ExtResource("1_flnan")
 player_pull_force = 30
