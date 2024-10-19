@@ -61,7 +61,7 @@ texture = ExtResource("1_5j8mf")
 
 [node name="FallingObjecs" type="GPUParticles2D" parent="Environment"]
 z_index = -1
-position = Vector2(0, -911)
+position = Vector2(-782, -1748)
 amount = 150
 process_material = SubResource("ParticleProcessMaterial_fa1x2")
 texture = ExtResource("2_yu4ut")
