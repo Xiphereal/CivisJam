@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=30 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/suddent_pull_timer.gd" id="1_psoe2"]
 [ext_resource type="Texture2D" uid="uid://p26qyddk35y6" path="res://art/boss.png" id="2_0aigi"]
 [ext_resource type="Script" path="res://scenes/screen_shake.gd" id="2_c2w7v"]
+[ext_resource type="Texture2D" uid="uid://n6b8osfvau3m" path="res://art/hoja1.png" id="2_yu4ut"]
 [ext_resource type="Texture2D" uid="uid://bdgc0c7xpnf62" path="res://art/Foreground.png" id="3_4tilt"]
 [ext_resource type="AudioStream" uid="uid://l6lntkmm5vy5" path="res://audio/BOSS FIGHT.wav" id="3_5jvhv"]
 [ext_resource type="Texture2D" uid="uid://ce71up5nhrn8n" path="res://art/rope.png" id="3_kwbbp"]
@@ -13,31 +14,104 @@
 [ext_resource type="Script" path="res://scenes/hold_bar.gd" id="9_yf12d"]
 [ext_resource type="Script" path="res://scenes/boss_exhaust.gd" id="10_qfkqb"]
 [ext_resource type="Script" path="res://scenes/sudden_pull.gd" id="10_s7g2n"]
+[ext_resource type="Script" path="res://scenes/did_i_win_or_lose.gd" id="13_tykf0"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fa1x2"]
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(1500, 1, 1)
+angle_min = -40.3
+angle_max = 52.4
 direction = Vector3(0, 1, 0)
 spread = 2.022
-initial_velocity_max = 322.58
-gravity = Vector3(0, 98, 0)
-linear_accel_min = -12.9
-linear_accel_max = 16.13
+initial_velocity_max = 50.0
+gravity = Vector3(0, 70, 0)
 scale_min = 0.01
-scale_max = 0.3
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
-size = Vector2(56.518, 584)
+scale_max = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7n2f"]
 size = Vector2(20, 54)
 
+[sub_resource type="Animation" id="Animation_c6sqw"]
+resource_name = "pull"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(12.963, 5.367), Vector2(-27.2037, 5.44075)]
+}
+
+[sub_resource type="Animation" id="Animation_rb430"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(12.963, 5.367)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dpg0i"]
+_data = {
+"RESET": SubResource("Animation_rb430"),
+"pull": SubResource("Animation_c6sqw")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
+size = Vector2(56.518, 584)
+
+[sub_resource type="Animation" id="Animation_0ebb0"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DBoss:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.46667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.164001]
+}
+
+[sub_resource type="Animation" id="Animation_auxwn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2DBoss:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gf0cc"]
+_data = {
+"RESET": SubResource("Animation_auxwn"),
+"idle": SubResource("Animation_0ebb0")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0lun"]
 size = Vector2(172.807, 645.175)
-
-[sub_resource type="LabelSettings" id="LabelSettings_umco7"]
-font_size = 56
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cplf"]
 bg_color = Color(1.58831e-06, 0.727682, 0.0957549, 1)
@@ -53,23 +127,23 @@ bg_color = Color(0.739412, 0.721203, 0.0451093, 1)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Scenary" type="Node2D" parent="."]
+[node name="Environment" type="Node2D" parent="."]
 
-[node name="Background" type="Sprite2D" parent="Scenary"]
+[node name="Background" type="Sprite2D" parent="Environment"]
 z_index = -1
 scale = Vector2(0.516667, 0.516667)
 texture = ExtResource("1_5j8mf")
 
-[node name="FallingObjecs" type="GPUParticles2D" parent="Scenary"]
+[node name="FallingObjecs" type="GPUParticles2D" parent="Environment"]
 z_index = -1
-position = Vector2(0, -911)
-amount = 30
+position = Vector2(-782, -1748)
+amount = 150
 process_material = SubResource("ParticleProcessMaterial_fa1x2")
-texture = ExtResource("5_ecji2")
-lifetime = 5.0
+texture = ExtResource("2_yu4ut")
+lifetime = 8.0
 visibility_rect = Rect2(-2322.7, -841.658, 4638.97, 4600.25)
 
-[node name="Foreground" type="Sprite2D" parent="Scenary"]
+[node name="Foreground" type="Sprite2D" parent="Environment"]
 scale = Vector2(0.517, 0.517)
 texture = ExtResource("3_4tilt")
 
@@ -79,26 +153,6 @@ ignore_rotation = false
 script = ExtResource("2_c2w7v")
 max_offset = Vector2(15, 8)
 max_roll = 0.01
-
-[node name="Player" type="Node2D" parent="."]
-position = Vector2(-778, 249)
-scale = Vector2(2.20558, 2.20558)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(12.963, 5.367)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_kboov")
-
-[node name="WinArea" type="Area2D" parent="Player"]
-position = Vector2(-75, 12)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/WinArea"]
-position = Vector2(88, -38)
-shape = SubResource("RectangleShape2D_tutl4")
-
-[node name="StaminaBoost" type="Timer" parent="Player"]
-autostart = true
 
 [node name="Key" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -120,22 +174,56 @@ shape = SubResource("RectangleShape2D_t7n2f")
 
 [node name="Rope" type="Node2D" parent="."]
 position = Vector2(0, 198)
-scale = Vector2(0.199999, 0.199999)
+scale = Vector2(0.23, 0.23)
 
 [node name="Sprite" type="Sprite2D" parent="Rope"]
 position = Vector2(-800.004, -18.75)
 scale = Vector2(2.66147, 0.975003)
 texture = ExtResource("3_kwbbp")
 
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(-778, 249)
+scale = Vector2(2.20558, 2.20558)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(12.963, 5.367)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_kboov")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_dpg0i")
+}
+next/pull = &"RESET"
+
+[node name="WinArea" type="Area2D" parent="Player"]
+position = Vector2(-75, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/WinArea"]
+position = Vector2(88, -38)
+shape = SubResource("RectangleShape2D_tutl4")
+
+[node name="StaminaBoost" type="Timer" parent="Player"]
+autostart = true
+
 [node name="Boss" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(619, 248)
+position = Vector2(618, 241)
 scale = Vector2(2.28, 2.28)
 metadata/_edit_group_ = true
 
 [node name="Sprite2DBoss" type="Sprite2D" parent="Boss"]
+position = Vector2(-111.842, -17.1053)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_0aigi")
+offset = Vector2(447.368, 68.4211)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Boss"]
+libraries = {
+"": SubResource("AnimationLibrary_gf0cc")
+}
+autoplay = "idle"
 
 [node name="DefeatArea" type="Area2D" parent="Boss"]
 position = Vector2(-87, 25)
@@ -168,23 +256,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="DidIWinOrLose" type="Label" parent="CanvasLayer/Control"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -106.0
-offset_right = 45.0
-offset_bottom = -83.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_umco7")
 
 [node name="Stamina" type="ProgressBar" parent="CanvasLayer/Control"]
 unique_name_in_owner = true
@@ -238,6 +309,27 @@ value = 4.0
 show_percentage = false
 script = ExtResource("10_s7g2n")
 
+[node name="DidIWinOrLose" type="Button" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00520833
+anchor_top = -0.00925926
+anchor_right = 1.00521
+anchor_bottom = 0.990741
+offset_left = -10.0
+offset_top = 10.0
+offset_right = -2.00012
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+script = ExtResource("13_tykf0")
+metadata/_edit_use_anchors_ = true
+
+[node name="EnableInputAfter" type="Timer" parent="CanvasLayer/Control/DidIWinOrLose"]
+wait_time = 3.0
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_5jvhv")
@@ -251,3 +343,5 @@ unique_name_in_owner = true
 [connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
 [connection signal="timeout" from="Boss/SuddentPull" to="Boss/SuddentPull" method="_on_timeout"]
 [connection signal="timeout" from="Boss/BossExhaust" to="Key" method="_on_boss_force_loss_timeout"]
+[connection signal="pressed" from="CanvasLayer/Control/DidIWinOrLose" to="CanvasLayer/Control/DidIWinOrLose" method="_on_pressed"]
+[connection signal="timeout" from="CanvasLayer/Control/DidIWinOrLose/EnableInputAfter" to="CanvasLayer/Control/DidIWinOrLose" method="_enable_input_after_timeout"]

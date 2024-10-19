@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://x6f5t5ylubak"]
+[gd_scene load_steps=3 format=3 uid="uid://b323c444vabsh"]
 
-[ext_resource type="VideoStream" path="res://art/intro.ogv" id="1_v2chq"]
 [ext_resource type="Script" path="res://scenes/intro.gd" id="2_7niog"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_vlqow"]
+file = "res://art/intro.ogv"
 
 [node name="Intro" type="CanvasLayer"]
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-stream = ExtResource("1_v2chq")
+stream = SubResource("VideoStreamTheora_vlqow")
 autoplay = true
 script = ExtResource("2_7niog")
 

@@ -11,7 +11,8 @@ extends Node2D
 
 @onready var hold_stamina := 100
 
-@onready var did_i_win_or_lose: Label = %DidIWinOrLose
+@onready var did_i_win_or_lose: Button = %DidIWinOrLose
+@onready var _player_animation: AnimationPlayer = $"../Player/AnimationPlayer"
 
 const YOULOSE = preload("res://audio/YOULOSE.wav")
 const YOUWIN = preload("res://audio/YOUWIN.wav")
@@ -34,6 +35,7 @@ var holding := false
 func _process(delta):
 	%Stamina.value=stamina
 	if Input.is_action_just_pressed("pull"):
+		_player_pull()
 		_update_stamina()
 		_play_sfx()
 			
@@ -54,8 +56,13 @@ func _update_holding():
 	
 func _update_stamina():
 	if stamina > 0:
-		player_pull(player_pull_force)
 		stamina -= stamina_loss_per_click
+		
+func _player_pull():
+	if stamina > 0:
+		player_pull(player_pull_force)
+		_player_animation.play("pull")
+		_player_animation.queue("RESET")
 
 func _update_hold_stamina():
 	if Input.is_action_just_pressed("pull"):
@@ -75,18 +82,19 @@ func boss_pull(force):
 func player_pull(force):
 	position.x -= player_pull_force
 
+
 func _boss_constant_pull(delta):
 	var boss_distance_force = %Boss.position.distance_to(position) * 0.1
 	boss_pull(boss_pull_force * boss_distance_force * delta)
 
 func _on_win(area: Area2D) -> void:
-	did_i_win_or_lose.text = "You win!" 
+	did_i_win_or_lose.win()
 	_reach_end_game()
 	%Music.stream = YOUWIN
 	%Music.play()
 
 func _on_defeat(area: Area2D) -> void:
-	did_i_win_or_lose.text = "You lose..." 
+	did_i_win_or_lose.lose()
 	_reach_end_game()
 	%Music.stream = YOULOSE
 	%Music.play()
