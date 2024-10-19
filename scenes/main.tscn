@@ -1,30 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=10 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
+[ext_resource type="Texture2D" uid="uid://eqrn27lxbokj" path="res://art/player.png" id="1_kboov"]
 [ext_resource type="Script" path="res://scenes/suddent_pull_timer.gd" id="1_psoe2"]
+[ext_resource type="Texture2D" uid="uid://p26qyddk35y6" path="res://art/boss.png" id="2_0aigi"]
 [ext_resource type="AudioStream" uid="uid://l6lntkmm5vy5" path="res://audio/BOSS FIGHT.wav" id="3_5jvhv"]
-
-[sub_resource type="Gradient" id="Gradient_3l363"]
-offsets = PackedFloat32Array(0, 0.571429, 1)
-colors = PackedColorArray(0, 0.517647, 0, 1, 0.675325, 0.675325, 0.675325, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_3tbwp"]
-gradient = SubResource("Gradient_3l363")
+[ext_resource type="Texture2D" uid="uid://5o8miop8gg2g" path="res://art/keys.png" id="5_ecji2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
 size = Vector2(101, 584)
-
-[sub_resource type="Gradient" id="Gradient_20k1u"]
-colors = PackedColorArray(1, 0.137255, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_scwlu"]
-gradient = SubResource("Gradient_20k1u")
-
-[sub_resource type="Gradient" id="Gradient_6dqa4"]
-colors = PackedColorArray(0.805694, 0.727546, 0.0751199, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_rlxgx"]
-gradient = SubResource("Gradient_6dqa4")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7n2f"]
 size = Vector2(20, 54)
@@ -42,9 +26,9 @@ position = Vector2(277, 353)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(12.9631, 3.36738)
-scale = Vector2(-0.477802, 284.258)
-texture = SubResource("GradientTexture1D_3tbwp")
+position = Vector2(12.963, 5.367)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_kboov")
 
 [node name="WinArea" type="Area2D" parent="Player"]
 position = Vector2(-75, 12)
@@ -58,9 +42,7 @@ position = Vector2(857, 353)
 metadata/_edit_group_ = true
 
 [node name="Sprite2DBoss" type="Sprite2D" parent="Boss"]
-rotation = 3.14159
-scale = Vector2(0.491385, -290.992)
-texture = SubResource("GradientTexture1D_scwlu")
+texture = ExtResource("2_0aigi")
 
 [node name="DefeatArea" type="Area2D" parent="Boss"]
 position = Vector2(-87, 25)
@@ -84,8 +66,8 @@ boss_pull_force = 2
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Key"]
-scale = Vector2(-0.078125, 54.5)
-texture = SubResource("GradientTexture1D_rlxgx")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_ecji2")
 
 [node name="Area2D" type="Area2D" parent="Key"]
 
