@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=21 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ce71up5nhrn8n" path="res://art/rope.png" id="3_kwbbp"]
 [ext_resource type="Texture2D" uid="uid://5o8miop8gg2g" path="res://art/keys.png" id="5_ecji2"]
 [ext_resource type="Script" path="res://scenes/boss_exhaust.gd" id="10_qfkqb"]
+[ext_resource type="Script" path="res://scenes/sudden_pull.gd" id="10_s7g2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
 size = Vector2(56.518, 584)
@@ -39,8 +40,14 @@ font_size = 56
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cplf"]
 bg_color = Color(1.58831e-06, 0.727682, 0.0957549, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psvvm"]
+bg_color = Color(0.741176, 0.721569, 0.0470588, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sb71a"]
 bg_color = Color(0.905269, 2.38247e-06, 1.92523e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n2sf"]
+bg_color = Color(0.739412, 0.721203, 0.0451093, 1)
 
 [node name="Node2D" type="Node2D"]
 
@@ -120,6 +127,7 @@ position = Vector2(79.1053, -57.2368)
 shape = SubResource("RectangleShape2D_f0lun")
 
 [node name="SuddentPull" type="Timer" parent="Boss"]
+unique_name_in_owner = true
 autostart = true
 script = ExtResource("1_psoe2")
 min_force = 35
@@ -178,6 +186,17 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0cplf")
 value = 50.0
 show_percentage = false
 
+[node name="HoldBar" type="ProgressBar" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 0
+offset_top = 72.0
+offset_right = 357.0
+offset_bottom = 131.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_psvvm")
+value = 50.0
+show_percentage = false
+
 [node name="BossExhaust" type="ProgressBar" parent="CanvasLayer/Control"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 1
@@ -192,6 +211,22 @@ value = 50.0
 show_percentage = false
 script = ExtResource("10_qfkqb")
 
+[node name="SuddenPull" type="ProgressBar" parent="CanvasLayer/Control"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -357.0
+offset_top = 76.0
+offset_bottom = 135.0
+grow_horizontal = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_2n2sf")
+max_value = 4.0
+value = 4.0
+show_percentage = false
+script = ExtResource("10_s7g2n")
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_5jvhv")
@@ -204,5 +239,4 @@ unique_name_in_owner = true
 [connection signal="timeout" from="Player/StaminaBoost" to="Key" method="_on_stamina_boost_timeout"]
 [connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
 [connection signal="timeout" from="Boss/SuddentPull" to="Boss/SuddentPull" method="_on_timeout"]
-[connection signal="timeout" from="Boss/SFXPPlay" to="Boss/SFXPPlay" method="_on_timeout"]
 [connection signal="timeout" from="Boss/BossExhaust" to="Key" method="_on_boss_force_loss_timeout"]
