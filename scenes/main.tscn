@@ -19,16 +19,30 @@ font_size = 56
 
 [node name="Node2D" type="Node2D"]
 
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1375.0
+offset_top = -699.0
+offset_right = 2465.0
+offset_bottom = 1461.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_5j8mf")
+
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(604, 284)
-scale = Vector2(0.336, 0.336)
+scale = Vector2(0.516667, 0.516667)
 texture = ExtResource("1_5j8mf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(577, 325)
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(109, 473)
+position = Vector2(-751, 239)
+scale = Vector2(2.20558, 2.20558)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -44,7 +58,8 @@ position = Vector2(88, -38)
 shape = SubResource("RectangleShape2D_tutl4")
 
 [node name="Boss" type="Node2D" parent="."]
-position = Vector2(1026, 460)
+position = Vector2(619, 248)
+scale = Vector2(2.28, 2.28)
 metadata/_edit_group_ = true
 
 [node name="Sprite2DBoss" type="Sprite2D" parent="Boss"]
@@ -65,7 +80,8 @@ max_force = 60
 
 [node name="Key" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(575, 436)
+position = Vector2(-39, 241)
+scale = Vector2(3.10714, 3.10714)
 script = ExtResource("1_flnan")
 player_pull_force = 30
 metadata/_edit_group_ = true
