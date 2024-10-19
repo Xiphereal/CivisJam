@@ -22,7 +22,7 @@ font_size = 56
 position = Vector2(577, 325)
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(277, 353)
+position = Vector2(109, 353)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -38,7 +38,7 @@ position = Vector2(88, -38)
 shape = SubResource("RectangleShape2D_tutl4")
 
 [node name="Boss" type="Node2D" parent="."]
-position = Vector2(857, 353)
+position = Vector2(1026, 353)
 metadata/_edit_group_ = true
 
 [node name="Sprite2DBoss" type="Sprite2D" parent="Boss"]
