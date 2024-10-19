@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=11 format=3 uid="uid://cfjit7ema1pr0"]
 
+[ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
 [ext_resource type="Texture2D" uid="uid://eqrn27lxbokj" path="res://art/player.png" id="1_kboov"]
 [ext_resource type="Script" path="res://scenes/suddent_pull_timer.gd" id="1_psoe2"]
@@ -18,11 +19,16 @@ font_size = 56
 
 [node name="Node2D" type="Node2D"]
 
+[node name="BackgroundGameplay" type="Sprite2D" parent="."]
+position = Vector2(604, 284)
+scale = Vector2(0.336, 0.336)
+texture = ExtResource("1_5j8mf")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 325)
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(109, 353)
+position = Vector2(109, 473)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -38,7 +44,7 @@ position = Vector2(88, -38)
 shape = SubResource("RectangleShape2D_tutl4")
 
 [node name="Boss" type="Node2D" parent="."]
-position = Vector2(1026, 353)
+position = Vector2(1026, 460)
 metadata/_edit_group_ = true
 
 [node name="Sprite2DBoss" type="Sprite2D" parent="Boss"]
@@ -59,7 +65,7 @@ max_force = 60
 
 [node name="Key" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(575, 353)
+position = Vector2(575, 436)
 script = ExtResource("1_flnan")
 player_pull_force = 30
 boss_pull_force = 2
