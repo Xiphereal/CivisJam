@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=13 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -9,7 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://5o8miop8gg2g" path="res://art/keys.png" id="5_ecji2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
-size = Vector2(101, 584)
+size = Vector2(56.518, 584)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0lun"]
+size = Vector2(172.807, 645.175)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7n2f"]
 size = Vector2(20, 54)
@@ -62,8 +65,8 @@ texture = ExtResource("2_0aigi")
 position = Vector2(-87, 25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss/DefeatArea"]
-position = Vector2(88, -38)
-shape = SubResource("RectangleShape2D_tutl4")
+position = Vector2(79.1053, -57.2368)
+shape = SubResource("RectangleShape2D_f0lun")
 
 [node name="SuddentPull" type="Timer" parent="Boss"]
 autostart = true
