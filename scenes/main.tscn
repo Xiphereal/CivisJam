@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=14 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -6,16 +6,17 @@
 [ext_resource type="Script" path="res://scenes/suddent_pull_timer.gd" id="1_psoe2"]
 [ext_resource type="Texture2D" uid="uid://p26qyddk35y6" path="res://art/boss.png" id="2_0aigi"]
 [ext_resource type="AudioStream" uid="uid://l6lntkmm5vy5" path="res://audio/BOSS FIGHT.wav" id="3_5jvhv"]
+[ext_resource type="Texture2D" uid="uid://ce71up5nhrn8n" path="res://art/rope.png" id="3_kwbbp"]
 [ext_resource type="Texture2D" uid="uid://5o8miop8gg2g" path="res://art/keys.png" id="5_ecji2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
 size = Vector2(56.518, 584)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0lun"]
-size = Vector2(172.807, 645.175)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7n2f"]
 size = Vector2(20, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0lun"]
+size = Vector2(172.807, 645.175)
 
 [sub_resource type="LabelSettings" id="LabelSettings_umco7"]
 font_size = 56
@@ -32,7 +33,7 @@ texture = ExtResource("1_5j8mf")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(-751, 239)
+position = Vector2(-778, 249)
 scale = Vector2(2.20558, 2.20558)
 metadata/_edit_group_ = true
 
@@ -50,6 +51,56 @@ shape = SubResource("RectangleShape2D_tutl4")
 
 [node name="StaminaBoost" type="Timer" parent="Player"]
 autostart = true
+
+[node name="Rope" type="Node2D" parent="."]
+position = Vector2(0, 198)
+scale = Vector2(0.199999, 0.199999)
+
+[node name="Sprite" type="Sprite2D" parent="Rope"]
+texture = ExtResource("3_kwbbp")
+
+[node name="Sprite6" type="Sprite2D" parent="Rope"]
+position = Vector2(750.002, 0)
+texture = ExtResource("3_kwbbp")
+
+[node name="Sprite7" type="Sprite2D" parent="Rope"]
+position = Vector2(1490, 0)
+texture = ExtResource("3_kwbbp")
+
+[node name="Sprite2" type="Sprite2D" parent="Rope"]
+position = Vector2(-745.002, 0)
+texture = ExtResource("3_kwbbp")
+
+[node name="Sprite3" type="Sprite2D" parent="Rope"]
+position = Vector2(-1495, 15)
+texture = ExtResource("3_kwbbp")
+
+[node name="Sprite4" type="Sprite2D" parent="Rope"]
+position = Vector2(-2220.01, 30.0001)
+texture = ExtResource("3_kwbbp")
+
+[node name="Sprite5" type="Sprite2D" parent="Rope"]
+position = Vector2(-2935.01, 30.0001)
+texture = ExtResource("3_kwbbp")
+
+[node name="Key" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-48, 262)
+scale = Vector2(3.10714, 3.10714)
+script = ExtResource("1_flnan")
+player_pull_force = 30
+boss_pull_force_based_on_distance = 0.08
+stamina_boost = 30
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Key"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("5_ecji2")
+
+[node name="Area2D" type="Area2D" parent="Key"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key/Area2D"]
+shape = SubResource("RectangleShape2D_t7n2f")
 
 [node name="Boss" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -78,25 +129,6 @@ max_force = 60
 wait_time = 15.0
 one_shot = true
 autostart = true
-
-[node name="Key" type="Node2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(-48, 241)
-scale = Vector2(3.10714, 3.10714)
-script = ExtResource("1_flnan")
-player_pull_force = 30
-boss_pull_force_based_on_distance = 0.08
-stamina_boost = 30
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Key"]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("5_ecji2")
-
-[node name="Area2D" type="Area2D" parent="Key"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Key/Area2D"]
-shape = SubResource("RectangleShape2D_t7n2f")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
