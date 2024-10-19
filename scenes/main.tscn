@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=19 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -20,6 +20,19 @@ size = Vector2(20, 54)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0lun"]
 size = Vector2(172.807, 645.175)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fa1x2"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1500, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 2.022
+initial_velocity_max = 322.58
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -12.9
+linear_accel_max = 16.13
+scale_min = 0.01
+scale_max = 0.5
 
 [sub_resource type="LabelSettings" id="LabelSettings_umco7"]
 font_size = 56
@@ -122,6 +135,14 @@ unique_name_in_owner = true
 wait_time = 15.0
 one_shot = true
 autostart = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(0, -911)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_fa1x2")
+texture = ExtResource("5_ecji2")
+lifetime = 5.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
