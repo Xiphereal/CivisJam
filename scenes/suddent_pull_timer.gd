@@ -18,6 +18,5 @@ func _on_timeout() -> void:
 	
 	change_timer_randomly()
 	
-	
 func change_timer_randomly():
 	wait_time = randi_range(min_time, max_time)

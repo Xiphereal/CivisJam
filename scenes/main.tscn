@@ -35,6 +35,7 @@ texture = ExtResource("1_5j8mf")
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_c2w7v")
+max_offset = Vector2(25, 18)
 
 [node name="Player" type="Node2D" parent="."]
 position = Vector2(-778, 249)
