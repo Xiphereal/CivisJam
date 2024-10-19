@@ -311,7 +311,6 @@ script = ExtResource("10_s7g2n")
 
 [node name="DidIWinOrLose" type="Button" parent="CanvasLayer/Control"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.00520833
@@ -324,8 +323,12 @@ offset_right = -2.00012
 offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
+disabled = true
 script = ExtResource("13_tykf0")
 metadata/_edit_use_anchors_ = true
+
+[node name="EnableInputAfter" type="Timer" parent="CanvasLayer/Control/DidIWinOrLose"]
+wait_time = 3.0
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -341,3 +344,4 @@ unique_name_in_owner = true
 [connection signal="timeout" from="Boss/SuddentPull" to="Boss/SuddentPull" method="_on_timeout"]
 [connection signal="timeout" from="Boss/BossExhaust" to="Key" method="_on_boss_force_loss_timeout"]
 [connection signal="pressed" from="CanvasLayer/Control/DidIWinOrLose" to="CanvasLayer/Control/DidIWinOrLose" method="_on_pressed"]
+[connection signal="timeout" from="CanvasLayer/Control/DidIWinOrLose/EnableInputAfter" to="CanvasLayer/Control/DidIWinOrLose" method="_enable_input_after_timeout"]
