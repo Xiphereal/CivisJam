@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=22 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -6,20 +6,12 @@
 [ext_resource type="Script" path="res://scenes/suddent_pull_timer.gd" id="1_psoe2"]
 [ext_resource type="Texture2D" uid="uid://p26qyddk35y6" path="res://art/boss.png" id="2_0aigi"]
 [ext_resource type="Script" path="res://scenes/screen_shake.gd" id="2_c2w7v"]
+[ext_resource type="Texture2D" uid="uid://bdgc0c7xpnf62" path="res://art/Foreground.png" id="3_4tilt"]
 [ext_resource type="AudioStream" uid="uid://l6lntkmm5vy5" path="res://audio/BOSS FIGHT.wav" id="3_5jvhv"]
 [ext_resource type="Texture2D" uid="uid://ce71up5nhrn8n" path="res://art/rope.png" id="3_kwbbp"]
 [ext_resource type="Texture2D" uid="uid://5o8miop8gg2g" path="res://art/keys.png" id="5_ecji2"]
 [ext_resource type="Script" path="res://scenes/boss_exhaust.gd" id="10_qfkqb"]
 [ext_resource type="Script" path="res://scenes/sudden_pull.gd" id="10_s7g2n"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
-size = Vector2(56.518, 584)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7n2f"]
-size = Vector2(20, 54)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0lun"]
-size = Vector2(172.807, 645.175)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fa1x2"]
 particle_flag_disable_z = true
@@ -33,6 +25,15 @@ linear_accel_min = -12.9
 linear_accel_max = 16.13
 scale_min = 0.01
 scale_max = 0.3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
+size = Vector2(56.518, 584)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7n2f"]
+size = Vector2(20, 54)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0lun"]
+size = Vector2(172.807, 645.175)
 
 [sub_resource type="LabelSettings" id="LabelSettings_umco7"]
 font_size = 56
@@ -51,9 +52,25 @@ bg_color = Color(0.739412, 0.721203, 0.0451093, 1)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Scenary" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="Scenary"]
+z_index = -1
 scale = Vector2(0.516667, 0.516667)
 texture = ExtResource("1_5j8mf")
+
+[node name="FallingObjecs" type="GPUParticles2D" parent="Scenary"]
+z_index = -1
+position = Vector2(0, -911)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_fa1x2")
+texture = ExtResource("5_ecji2")
+lifetime = 5.0
+visibility_rect = Rect2(-2322.7, -841.658, 4638.97, 4600.25)
+
+[node name="Foreground" type="Sprite2D" parent="Scenary"]
+scale = Vector2(0.517, 0.517)
+texture = ExtResource("3_4tilt")
 
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
@@ -138,15 +155,6 @@ unique_name_in_owner = true
 wait_time = 15.0
 one_shot = true
 autostart = true
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-z_index = 1
-position = Vector2(0, -911)
-amount = 30
-process_material = SubResource("ParticleProcessMaterial_fa1x2")
-texture = ExtResource("5_ecji2")
-lifetime = 5.0
-visibility_rect = Rect2(-2322.7, -841.658, 4638.97, 4600.25)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
