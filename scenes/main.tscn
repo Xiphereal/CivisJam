@@ -32,7 +32,7 @@ gravity = Vector3(0, 98, 0)
 linear_accel_min = -12.9
 linear_accel_max = 16.13
 scale_min = 0.01
-scale_max = 0.5
+scale_max = 0.3
 
 [sub_resource type="LabelSettings" id="LabelSettings_umco7"]
 font_size = 56
@@ -87,13 +87,13 @@ position = Vector2(0, 198)
 scale = Vector2(0.199999, 0.199999)
 
 [node name="Sprite" type="Sprite2D" parent="Rope"]
-position = Vector2(-141.508, 0)
-scale = Vector2(3.347, 0.75)
+position = Vector2(-800.004, -18.75)
+scale = Vector2(2.66147, 0.975003)
 texture = ExtResource("3_kwbbp")
 
 [node name="Key" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-48, 262)
+position = Vector2(-48, 239)
 scale = Vector2(3.10714, 3.10714)
 script = ExtResource("1_flnan")
 player_pull_force = 30
@@ -140,12 +140,13 @@ one_shot = true
 autostart = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
+z_index = 1
 position = Vector2(0, -911)
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_fa1x2")
 texture = ExtResource("5_ecji2")
 lifetime = 5.0
+visibility_rect = Rect2(-2322.7, -841.658, 4638.97, 4600.25)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
