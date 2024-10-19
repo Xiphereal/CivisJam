@@ -15,12 +15,33 @@ const YOULOSE = preload("res://audio/YOULOSE.wav")
 const YOUWIN = preload("res://audio/YOUWIN.wav")
 
 
+const min := 0
+const max := 3
+
+
+const KEYS1 = preload("res://audio/KEYS 1.wav")
+const KEYS2 = preload("res://audio/KEYS 2.wav")
+const KEYSPULL = preload("res://audio/KEYS PULL.wav")
+const KEYSSWING = preload("res://audio/KEYS SWING.wav")
+
+const sfx_array := [KEYS1, KEYS2, KEYSPULL, KEYSSWING]
+
+var current_stream = sfx_array[0]
+
+
 func _process(delta):
 	%Stamina.value=stamina
 	if Input.is_action_just_pressed("pull"):
 		if stamina > 0:
 			player_pull(player_pull_force)
 			stamina -= stamina_loss_per_click
+		
+		if randi_range(0, 1) > 0.9:
+			current_stream = sfx_array[randi_range(min, max)]
+			%SFX.stream = current_stream
+			%SFX.pitch_scale = randi_range(1, 10)
+			%SFX.play()
+			%SFX.pitch_scale = 1
 			
 	_boss_constant_pull(delta)
 	

@@ -19,8 +19,8 @@ var current_stream = sfx_array[0]
 func _on_timeout() -> void:
 	current_stream = sfx_array[randi_range(min, max)]
 	
-	%SFX.stream = current_stream
-	%SFX.play()
+	#%SFX.stream = current_stream
+	#%SFX.play()
 	
 	change_timer_randomly()
 	
