@@ -90,7 +90,6 @@ scale = Vector2(3.10714, 3.10714)
 script = ExtResource("1_flnan")
 player_pull_force = 30
 boss_pull_force_based_on_distance = 0.08
-stamina_boost = 30
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Key"]

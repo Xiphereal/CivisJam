@@ -5,12 +5,11 @@ extends Node2D
 
 @export var boss_pull_force_based_on_distance = 0.3
 
-@export var stamina_boost = 20
+@onready var stamina := 100
+@export var stamina_gain = 30
 @export var stamina_loss_per_click = 10
 
 @onready var did_i_win_or_lose: Label = %DidIWinOrLose
-
-@onready var stamina := 100
 
 const YOULOSE = preload("res://audio/YOULOSE.wav")
 const YOUWIN = preload("res://audio/YOUWIN.wav")
@@ -52,7 +51,7 @@ func _reach_end_game():
 
 func _on_stamina_boost_timeout() -> void:
 	if stamina < 100:
-		stamina += stamina_boost 
+		stamina += stamina_gain
 
 func _on_boss_force_loss_timeout() -> void:
 	boss_pull_force *= 0.5
