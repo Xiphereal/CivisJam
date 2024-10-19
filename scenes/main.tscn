@@ -58,30 +58,8 @@ position = Vector2(0, 198)
 scale = Vector2(0.199999, 0.199999)
 
 [node name="Sprite" type="Sprite2D" parent="Rope"]
-texture = ExtResource("3_kwbbp")
-
-[node name="Sprite6" type="Sprite2D" parent="Rope"]
-position = Vector2(750.002, 0)
-texture = ExtResource("3_kwbbp")
-
-[node name="Sprite7" type="Sprite2D" parent="Rope"]
-position = Vector2(1490, 0)
-texture = ExtResource("3_kwbbp")
-
-[node name="Sprite2" type="Sprite2D" parent="Rope"]
-position = Vector2(-745.002, 0)
-texture = ExtResource("3_kwbbp")
-
-[node name="Sprite3" type="Sprite2D" parent="Rope"]
-position = Vector2(-1495, 15)
-texture = ExtResource("3_kwbbp")
-
-[node name="Sprite4" type="Sprite2D" parent="Rope"]
-position = Vector2(-2220.01, 30.0001)
-texture = ExtResource("3_kwbbp")
-
-[node name="Sprite5" type="Sprite2D" parent="Rope"]
-position = Vector2(-2935.01, 30.0001)
+position = Vector2(-141.508, 0)
+scale = Vector2(3.347, 0.75)
 texture = ExtResource("3_kwbbp")
 
 [node name="Key" type="Node2D" parent="."]
