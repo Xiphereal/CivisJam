@@ -45,6 +45,9 @@ position = Vector2(-75, 12)
 position = Vector2(88, -38)
 shape = SubResource("RectangleShape2D_tutl4")
 
+[node name="StaminaBoost" type="Timer" parent="Player"]
+autostart = true
+
 [node name="Boss" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(619, 248)
@@ -67,9 +70,6 @@ autostart = true
 script = ExtResource("1_psoe2")
 min_force = 35
 max_force = 60
-
-[node name="StaminaBoost" type="Timer" parent="Boss"]
-autostart = true
 
 [node name="BossForceLoss" type="Timer" parent="Boss"]
 wait_time = 15.0
@@ -143,7 +143,7 @@ autoplay = true
 unique_name_in_owner = true
 
 [connection signal="area_entered" from="Player/WinArea" to="Key" method="_on_win"]
+[connection signal="timeout" from="Player/StaminaBoost" to="Key" method="_on_stamina_boost_timeout"]
 [connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
 [connection signal="timeout" from="Boss/SuddentPull" to="Boss/SuddentPull" method="_on_timeout"]
-[connection signal="timeout" from="Boss/StaminaBoost" to="Key" method="_on_stamina_boost_timeout"]
 [connection signal="timeout" from="Boss/BossForceLoss" to="Key" method="_on_boss_force_loss_timeout"]
