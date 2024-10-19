@@ -70,6 +70,11 @@ max_force = 60
 [node name="StaminaBoost" type="Timer" parent="Boss"]
 autostart = true
 
+[node name="BossForceLoss" type="Timer" parent="Boss"]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
 [node name="Key" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-48, 241)
@@ -77,6 +82,7 @@ scale = Vector2(3.10714, 3.10714)
 script = ExtResource("1_flnan")
 player_pull_force = 30
 boss_pull_force_based_on_distance = 0.08
+stamina_boost = 30
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Key"]
@@ -139,3 +145,4 @@ unique_name_in_owner = true
 [connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
 [connection signal="timeout" from="Boss/SuddentPull" to="Boss/SuddentPull" method="_on_timeout"]
 [connection signal="timeout" from="Boss/StaminaBoost" to="Key" method="_on_stamina_boost_timeout"]
+[connection signal="timeout" from="Boss/BossForceLoss" to="Key" method="_on_boss_force_loss_timeout"]

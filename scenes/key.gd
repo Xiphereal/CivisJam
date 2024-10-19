@@ -53,3 +53,7 @@ func _reach_end_game():
 func _on_stamina_boost_timeout() -> void:
 	if stamina < 100:
 		stamina += stamina_boost 
+
+
+func _on_boss_force_loss_timeout() -> void:
+	boss_pull_force *= 0.5
