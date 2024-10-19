@@ -82,18 +82,9 @@ shape = SubResource("RectangleShape2D_tutl4")
 [node name="StaminaBoost" type="Timer" parent="Player"]
 autostart = true
 
-[node name="Rope" type="Node2D" parent="."]
-position = Vector2(0, 198)
-scale = Vector2(0.199999, 0.199999)
-
-[node name="Sprite" type="Sprite2D" parent="Rope"]
-position = Vector2(-800.004, -18.75)
-scale = Vector2(2.66147, 0.975003)
-texture = ExtResource("3_kwbbp")
-
 [node name="Key" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-48, 239)
+position = Vector2(-48, 257)
 scale = Vector2(3.10714, 3.10714)
 script = ExtResource("1_flnan")
 player_pull_force = 30
@@ -108,6 +99,15 @@ texture = ExtResource("5_ecji2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Key/Area2D"]
 shape = SubResource("RectangleShape2D_t7n2f")
+
+[node name="Rope" type="Node2D" parent="."]
+position = Vector2(0, 198)
+scale = Vector2(0.199999, 0.199999)
+
+[node name="Sprite" type="Sprite2D" parent="Rope"]
+position = Vector2(-800.004, -18.75)
+scale = Vector2(2.66147, 0.975003)
+texture = ExtResource("3_kwbbp")
 
 [node name="Boss" type="Node2D" parent="."]
 unique_name_in_owner = true
