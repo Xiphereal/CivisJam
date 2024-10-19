@@ -14,6 +14,8 @@ func _on_timeout() -> void:
 	%SFX.stream = _PULL
 	%SFX.play()
 	
+	%Camera.initiate_shake(1)
+	
 	change_timer_randomly()
 	
 	
