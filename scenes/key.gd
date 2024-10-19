@@ -3,6 +3,8 @@ extends Node2D
 @export var player_pull_force = 5
 @export var boss_pull_force = 1
 
+@export var boss_pull_force_based_on_distance = 0.3
+
 @onready var did_i_win_or_lose: Label = %DidIWinOrLose
 
 func _process(delta):
@@ -18,9 +20,12 @@ func player_pull(force):
 	position.x -= player_pull_force
 
 func _boss_constant_pull(delta):
-	var boss_distance_force = %Boss.position.distance_to(position) * 0.1
-	print(boss_distance_force)
-	boss_pull(boss_pull_force * boss_distance_force * delta)
+	var boss :Node2D = %Boss
+	var position_after_pull :int = position.lerp(
+		boss.position,
+		boss_pull_force_based_on_distance * delta).x
+		
+	position.x = position_after_pull
 
 func _on_win(area: Area2D) -> void:
 	did_i_win_or_lose.text = "You win!" 
