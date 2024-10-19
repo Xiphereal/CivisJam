@@ -3,7 +3,6 @@ extends Button
 const WIN_SCREEN = preload("res://art/Win.png")
 const GAME_OVER_SCREEN = preload("res://art/GameOver.png")
 
-
 func win():
 	icon = WIN_SCREEN
 	visible = true
