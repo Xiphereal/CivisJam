@@ -19,7 +19,7 @@ font_size = 56
 
 [node name="Node2D" type="Node2D"]
 
-[node name="BackgroundGameplay" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(604, 284)
 scale = Vector2(0.336, 0.336)
 texture = ExtResource("1_5j8mf")
@@ -68,7 +68,6 @@ unique_name_in_owner = true
 position = Vector2(575, 436)
 script = ExtResource("1_flnan")
 player_pull_force = 30
-boss_pull_force = 2
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Key"]
