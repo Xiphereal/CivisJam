@@ -36,8 +36,6 @@ var pressed := false
 func _process(delta):
 	%Stamina.value=stamina
 	if Input.is_action_just_pressed("pull"):
-		pressed = true
-
 		if stamina > 0:
 			player_pull(player_pull_force)
 			stamina -= stamina_loss_per_click
@@ -49,13 +47,21 @@ func _process(delta):
 			%SFX.play()
 			%SFX.pitch_scale = 1
 			
+	_update_hold_stamina()
+
+	_boss_constant_pull(delta)
+	
+func _update_hold_stamina():
+	if Input.is_action_just_pressed("pull"):
+		pressed = true
 	if Input.is_action_just_released("pull"):
 		pressed = false
 		
 	if pressed:
-		hold_stamina -= 1
-
-	_boss_constant_pull(delta)
+		hold_stamina -= 2
+	hold_stamina += 1
+	hold_stamina = max(hold_stamina, 0)
+	hold_stamina = min(hold_stamina, 100)
 	
 func boss_pull(force):
 	position.x += force
