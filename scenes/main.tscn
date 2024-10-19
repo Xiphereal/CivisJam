@@ -148,8 +148,8 @@ shape = SubResource("RectangleShape2D_f0lun")
 unique_name_in_owner = true
 autostart = true
 script = ExtResource("1_psoe2")
-min_force = 35
-max_force = 60
+min_force = 50
+max_force = 75
 
 [node name="BossExhaust" type="Timer" parent="Boss"]
 unique_name_in_owner = true

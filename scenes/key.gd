@@ -16,10 +16,8 @@ extends Node2D
 const YOULOSE = preload("res://audio/YOULOSE.wav")
 const YOUWIN = preload("res://audio/YOUWIN.wav")
 
-
 const min := 0
 const max := 3
-
 
 const KEYS1 = preload("res://audio/KEYS 1.wav")
 const KEYS2 = preload("res://audio/KEYS 2.wav")
@@ -31,7 +29,7 @@ const sfx_array := [KEYS1, KEYS2, KEYSPULL, KEYSSWING]
 var current_stream = sfx_array[0]
 
 var pressed := false
-var holding := pressed and hold_stamina > 0
+var holding := false
 
 func _process(delta):
 	%Stamina.value=stamina
@@ -66,7 +64,7 @@ func _update_hold_stamina():
 		pressed = false
 		
 	if pressed:
-		hold_stamina -= 2
+		hold_stamina -= 3
 	hold_stamina += 1
 	hold_stamina = max(hold_stamina, 0)
 	hold_stamina = min(hold_stamina, 100)
