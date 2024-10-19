@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=30 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -29,11 +29,48 @@ gravity = Vector3(0, 70, 0)
 scale_min = 0.01
 scale_max = 0.1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
-size = Vector2(56.518, 584)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7n2f"]
 size = Vector2(20, 54)
+
+[sub_resource type="Animation" id="Animation_c6sqw"]
+resource_name = "pull"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(12.963, 5.367), Vector2(-27.2037, 5.44075)]
+}
+
+[sub_resource type="Animation" id="Animation_rb430"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(12.963, 5.367)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dpg0i"]
+_data = {
+"RESET": SubResource("Animation_rb430"),
+"pull": SubResource("Animation_c6sqw")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tutl4"]
+size = Vector2(56.518, 584)
 
 [sub_resource type="Animation" id="Animation_0ebb0"]
 resource_name = "idle"
@@ -117,26 +154,6 @@ script = ExtResource("2_c2w7v")
 max_offset = Vector2(15, 8)
 max_roll = 0.01
 
-[node name="Player" type="Node2D" parent="."]
-position = Vector2(-778, 249)
-scale = Vector2(2.20558, 2.20558)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(12.963, 5.367)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_kboov")
-
-[node name="WinArea" type="Area2D" parent="Player"]
-position = Vector2(-75, 12)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/WinArea"]
-position = Vector2(88, -38)
-shape = SubResource("RectangleShape2D_tutl4")
-
-[node name="StaminaBoost" type="Timer" parent="Player"]
-autostart = true
-
 [node name="Key" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-48, 257)
@@ -157,16 +174,42 @@ shape = SubResource("RectangleShape2D_t7n2f")
 
 [node name="Rope" type="Node2D" parent="."]
 position = Vector2(0, 198)
-scale = Vector2(0.199999, 0.199999)
+scale = Vector2(0.23, 0.23)
 
 [node name="Sprite" type="Sprite2D" parent="Rope"]
 position = Vector2(-800.004, -18.75)
 scale = Vector2(2.66147, 0.975003)
 texture = ExtResource("3_kwbbp")
 
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(-778, 249)
+scale = Vector2(2.20558, 2.20558)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(12.963, 5.367)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_kboov")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_dpg0i")
+}
+next/pull = &"RESET"
+
+[node name="WinArea" type="Area2D" parent="Player"]
+position = Vector2(-75, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/WinArea"]
+position = Vector2(88, -38)
+shape = SubResource("RectangleShape2D_tutl4")
+
+[node name="StaminaBoost" type="Timer" parent="Player"]
+autostart = true
+
 [node name="Boss" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(619, 248)
+position = Vector2(618, 241)
 scale = Vector2(2.28, 2.28)
 metadata/_edit_group_ = true
 
