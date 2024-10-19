@@ -7,6 +7,9 @@ extends Node2D
 
 @onready var did_i_win_or_lose: Label = %DidIWinOrLose
 
+const YOULOSE = preload("res://audio/YOULOSE.wav")
+const YOUWIN = preload("res://audio/YOUWIN.wav")
+
 func _process(delta):
 	if Input.is_action_just_pressed("pull"):
 		player_pull(player_pull_force)
@@ -30,10 +33,14 @@ func _boss_constant_pull(delta):
 func _on_win(area: Area2D) -> void:
 	did_i_win_or_lose.text = "You win!" 
 	_reach_end_game()
+	%Music.stream = YOUWIN
+	%Music.play()
 
 func _on_defeat(area: Area2D) -> void:
 	did_i_win_or_lose.text = "You lose..." 
 	_reach_end_game()
+	%Music.stream = YOULOSE
+	%Music.play()
 	
 func _reach_end_game():
 	player_pull_force = 0
