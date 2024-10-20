@@ -3,8 +3,6 @@ extends Button
 const WIN_SCREEN = preload("res://art/Win.png")
 const GAME_OVER_SCREEN = preload("res://art/GameOver.png")
 
-@onready var enable_input_after: Timer = $EnableInputAfter
-
 func win():
 	icon = WIN_SCREEN
 	_display()
