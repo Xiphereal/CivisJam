@@ -417,6 +417,7 @@ volume_db = -10.0
 [connection signal="timeout" from="Player/StaminaBoost" to="Key" method="_on_stamina_boost_timeout"]
 [connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
 [connection signal="timeout" from="Boss/SuddentPull" to="Boss/SuddentPull" method="_on_timeout"]
+[connection signal="timeout" from="Boss/SuddentPull" to="Boss/BossMouth" method="_say_got_ya"]
 [connection signal="timeout" from="Boss/BossExhaust" to="Key" method="_on_boss_force_loss_timeout"]
 [connection signal="timeout" from="Boss/BossExhaust" to="Boss/BossMouth" method="_on_boss_exhaust_timeout"]
 [connection signal="pressed" from="CanvasLayer/Control/DidIWinOrLose" to="CanvasLayer/Control/DidIWinOrLose" method="_on_pressed"]
