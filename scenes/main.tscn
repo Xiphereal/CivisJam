@@ -300,7 +300,7 @@ max_force = 75
 
 [node name="BossExhaust" type="Timer" parent="Boss"]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 15.0
 one_shot = true
 autostart = true
 
