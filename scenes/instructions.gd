@@ -5,4 +5,4 @@ func _process(delta: float) -> void:
 		_go_to_fight()
 
 func _go_to_fight():
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/instructions2.tscn")

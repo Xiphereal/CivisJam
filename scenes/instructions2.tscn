@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://brp2m65s80pfp"]
+
+[ext_resource type="VideoStream" path="res://art/INSTRUCCIONES.ogv" id="1_qia3g"]
+[ext_resource type="Script" path="res://scenes/instructions2.gd" id="2_6wqp1"]
+
+[node name="Intro" type="CanvasLayer"]
+
+[node name="Instructions" type="VideoStreamPlayer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_qia3g")
+autoplay = true
+loop = true
+script = ExtResource("2_6wqp1")

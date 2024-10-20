@@ -15,5 +15,6 @@ func _display():
 	visible = true
 
 func _on_pressed() -> void:
-	await get_tree().create_timer(1.5).timeout
-	get_tree().reload_current_scene()
+	await get_tree().create_timer(0.8).timeout
+	#get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/instructions2.tscn")
