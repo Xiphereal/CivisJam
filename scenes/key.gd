@@ -24,6 +24,7 @@ const KEYS1 = preload("res://audio/KEYS 1.wav")
 const KEYS2 = preload("res://audio/KEYS 2.wav")
 const KEYSPULL = preload("res://audio/KEYS PULL.wav")
 const KEYSSWING = preload("res://audio/KEYS SWING.wav")
+const LAUGH = preload("res://audio/LAUGH.wav")
 
 const SWEAT = preload("res://scenes/sweat.tscn")
 
@@ -34,6 +35,10 @@ var current_stream = sfx_array[0]
 var pressed := false
 var holding := false
 
+func _ready():
+	%SFX.stream = LAUGH
+	%SFX.play()
+	
 func _process(delta):
 	%Stamina.value=stamina
 	if Input.is_action_just_pressed("pull"):
@@ -46,7 +51,7 @@ func _process(delta):
 	_boss_constant_pull(delta)
 	
 func _play_sfx():
-	if randi_range(0, 1) > 0.9:
+	if randi_range(0, 1) > 0.95:
 		current_stream = sfx_array[randi_range(min, max)]
 		%SFX.stream = current_stream
 		%SFX.pitch_scale = randi_range(1, 10)

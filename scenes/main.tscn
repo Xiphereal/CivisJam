@@ -355,6 +355,7 @@ autoplay = true
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+volume_db = -10.0
 
 [connection signal="area_entered" from="Player/WinArea" to="Key" method="_on_win"]
 [connection signal="timeout" from="Player/StaminaBoost" to="Key" method="_on_stamina_boost_timeout"]
