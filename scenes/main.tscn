@@ -334,7 +334,6 @@ offset_right = -2.00012
 offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
-disabled = true
 script = ExtResource("13_tykf0")
 metadata/_edit_use_anchors_ = true
 

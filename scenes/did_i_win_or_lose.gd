@@ -15,10 +15,7 @@ func lose():
 	
 func _display():
 	visible = true
-	enable_input_after.start()
 
 func _on_pressed() -> void:
+	await get_tree().create_timer(1.5).timeout
 	get_tree().reload_current_scene()
-
-func _enable_input_after_timeout() -> void:
-	disabled = false
