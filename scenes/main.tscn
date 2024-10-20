@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=32 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scenes/boss_exhaust.gd" id="10_qfkqb"]
 [ext_resource type="Script" path="res://scenes/sudden_pull.gd" id="10_s7g2n"]
 [ext_resource type="Script" path="res://scenes/did_i_win_or_lose.gd" id="13_tykf0"]
+[ext_resource type="Script" path="res://scenes/boss_mouth.gd" id="13_xxu46"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fa1x2"]
 particle_flag_disable_z = true
@@ -266,6 +267,15 @@ wait_time = 15.0
 one_shot = true
 autostart = true
 
+[node name="BossMouth" type="TextureRect" parent="Boss"]
+unique_name_in_owner = true
+offset_left = -170.175
+offset_top = -131.579
+offset_right = 329.825
+offset_bottom = 368.421
+scale = Vector2(0.235624, 0.151238)
+script = ExtResource("13_xxu46")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -366,4 +376,5 @@ volume_db = -10.0
 [connection signal="area_entered" from="Boss/DefeatArea" to="Key" method="_on_defeat"]
 [connection signal="timeout" from="Boss/SuddentPull" to="Boss/SuddentPull" method="_on_timeout"]
 [connection signal="timeout" from="Boss/BossExhaust" to="Key" method="_on_boss_force_loss_timeout"]
+[connection signal="timeout" from="Boss/BossExhaust" to="Boss/BossMouth" method="_on_boss_exhaust_timeout"]
 [connection signal="pressed" from="CanvasLayer/Control/DidIWinOrLose" to="CanvasLayer/Control/DidIWinOrLose" method="_on_pressed"]
