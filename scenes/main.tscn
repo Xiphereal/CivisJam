@@ -37,7 +37,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("PlayerSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,7 +53,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("PlayerSprite:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -186,7 +186,8 @@ position = Vector2(-778, 249)
 scale = Vector2(2.20558, 2.20558)
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+unique_name_in_owner = true
 position = Vector2(12.963, 5.367)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_kboov")
@@ -212,6 +213,16 @@ unique_name_in_owner = true
 position = Vector2(618, 241)
 scale = Vector2(2.28, 2.28)
 metadata/_edit_group_ = true
+
+[node name="Money" type="GPUParticles2D" parent="Boss"]
+z_index = -1
+position = Vector2(-614.035, -872.368)
+scale = Vector2(0.438596, 0.438596)
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_fa1x2")
+texture = ExtResource("2_yu4ut")
+lifetime = 8.0
+visibility_rect = Rect2(-2322.7, -841.658, 4638.97, 4600.25)
 
 [node name="Sprite2DBoss" type="Sprite2D" parent="Boss"]
 position = Vector2(-111.842, -17.1053)

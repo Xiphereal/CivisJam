@@ -25,6 +25,8 @@ const KEYS2 = preload("res://audio/KEYS 2.wav")
 const KEYSPULL = preload("res://audio/KEYS PULL.wav")
 const KEYSSWING = preload("res://audio/KEYS SWING.wav")
 
+const SWEAT = preload("res://scenes/sweat.tscn")
+
 const sfx_array := [KEYS1, KEYS2, KEYSPULL, KEYSSWING]
 
 var current_stream = sfx_array[0]
@@ -57,12 +59,18 @@ func _update_holding():
 func _update_stamina():
 	if stamina > 0:
 		stamina -= stamina_loss_per_click
-		
+
 func _player_pull():
 	if stamina > 0:
 		player_pull(player_pull_force)
 		_player_animation.play("pull")
 		_player_animation.queue("RESET")
+		
+		var sweat = SWEAT.instantiate()
+		sweat.emitting = true
+		sweat.position.y -= 200
+		%PlayerSprite.add_child(sweat)
+		
 
 func _update_hold_stamina():
 	if Input.is_action_just_pressed("pull"):
