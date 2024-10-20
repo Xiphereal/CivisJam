@@ -304,6 +304,11 @@ wait_time = 15.0
 one_shot = true
 autostart = true
 
+[node name="GameOverWait" type="Timer" parent="Boss"]
+unique_name_in_owner = true
+wait_time = 0.8
+one_shot = true
+
 [node name="BossMouth" type="TextureRect" parent="Boss"]
 unique_name_in_owner = true
 offset_left = -170.175
@@ -420,4 +425,5 @@ volume_db = -10.0
 [connection signal="timeout" from="Boss/SuddentPull" to="Boss/BossMouth" method="_say_got_ya"]
 [connection signal="timeout" from="Boss/BossExhaust" to="Key" method="_on_boss_force_loss_timeout"]
 [connection signal="timeout" from="Boss/BossExhaust" to="Boss/BossMouth" method="_on_boss_exhaust_timeout"]
+[connection signal="timeout" from="Boss/GameOverWait" to="CanvasLayer/Control/DidIWinOrLose" method="_on_game_over_wait_timeout"]
 [connection signal="pressed" from="CanvasLayer/Control/DidIWinOrLose" to="CanvasLayer/Control/DidIWinOrLose" method="_on_pressed"]

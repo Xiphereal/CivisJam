@@ -3,6 +3,8 @@ extends Button
 const WIN_SCREEN = preload("res://art/Win.png")
 const GAME_OVER_SCREEN = preload("res://art/GameOver.png")
 
+var timeout = false
+
 func win():
 	icon = WIN_SCREEN
 	_display()
@@ -13,8 +15,13 @@ func lose():
 	
 func _display():
 	visible = true
+	%GameOverWait.start()
 
 func _on_pressed() -> void:
-	await get_tree().create_timer(0.8).timeout
+	if timeout:
+		get_tree().change_scene_to_file("res://scenes/instructions2.tscn")
 	#get_tree().reload_current_scene()
-	get_tree().change_scene_to_file("res://scenes/instructions2.tscn")
+
+
+func _on_game_over_wait_timeout():
+	timeout = true
