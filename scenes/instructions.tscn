@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddrejxymfpbnr"]
 
-[ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_yi45n"]
+[ext_resource type="Texture2D" uid="uid://dy58yn6o0t1lf" path="res://art/ÚLTIMO FOTOGRAMA INTRO.jpg" id="1_qwpx1"]
 [ext_resource type="Script" path="res://scenes/instructions.gd" id="2_dlyls"]
 
 [node name="Intro" type="CanvasLayer"]
@@ -8,5 +8,5 @@
 [node name="Instructions" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_yi45n")
+texture = ExtResource("1_qwpx1")
 script = ExtResource("2_dlyls")

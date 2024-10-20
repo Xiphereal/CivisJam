@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://b2rbthtv1poci"
-path="res://.godot/imported/YOULOSE.wav-791ca8ba60ba95309e852ae7291e78b5.sample"
+uid="uid://drcdtdobvn0fn"
+path="res://.godot/imported/ROPE 3.wav-27f22aed0a8682051ad4bbfd29eb4773.sample"
 
 [deps]
 
-source_file="res://audio/YOULOSE.wav"
-dest_files=["res://.godot/imported/YOULOSE.wav-791ca8ba60ba95309e852ae7291e78b5.sample"]
+source_file="res://audio/ROPE 3.wav"
+dest_files=["res://.godot/imported/ROPE 3.wav-27f22aed0a8682051ad4bbfd29eb4773.sample"]
 
 [params]
 
