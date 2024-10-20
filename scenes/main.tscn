@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=31 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://p26qyddk35y6" path="res://art/boss.png" id="2_0aigi"]
 [ext_resource type="Script" path="res://scenes/screen_shake.gd" id="2_c2w7v"]
 [ext_resource type="Texture2D" uid="uid://n6b8osfvau3m" path="res://art/hoja1.png" id="2_yu4ut"]
+[ext_resource type="Texture2D" uid="uid://qmspi2ul8hls" path="res://art/Vase.png" id="3_0x5h4"]
 [ext_resource type="Texture2D" uid="uid://bdgc0c7xpnf62" path="res://art/Foreground.png" id="3_4tilt"]
 [ext_resource type="AudioStream" uid="uid://l6lntkmm5vy5" path="res://audio/BOSS FIGHT.wav" id="3_5jvhv"]
 [ext_resource type="Texture2D" uid="uid://ce71up5nhrn8n" path="res://art/rope.png" id="3_kwbbp"]
@@ -20,8 +21,8 @@
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(1500, 1, 1)
-angle_min = -40.3
-angle_max = 52.4
+angle_min = -283.7
+angle_max = 720.0
 direction = Vector3(0, 1, 0)
 spread = 2.022
 initial_velocity_max = 50.0
@@ -137,9 +138,18 @@ texture = ExtResource("1_5j8mf")
 [node name="FallingObjecs" type="GPUParticles2D" parent="Environment"]
 z_index = -1
 position = Vector2(-782, -1748)
-amount = 150
+amount = 75
 process_material = SubResource("ParticleProcessMaterial_fa1x2")
 texture = ExtResource("2_yu4ut")
+lifetime = 8.0
+visibility_rect = Rect2(-2322.7, -841.658, 4638.97, 4600.25)
+
+[node name="FallingObjecs2" type="GPUParticles2D" parent="Environment"]
+z_index = -1
+position = Vector2(-782, -1748)
+amount = 75
+process_material = SubResource("ParticleProcessMaterial_fa1x2")
+texture = ExtResource("3_0x5h4")
 lifetime = 8.0
 visibility_rect = Rect2(-2322.7, -841.658, 4638.97, 4600.25)
 
@@ -345,7 +355,6 @@ autoplay = true
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-volume_db = -10.0
 
 [connection signal="area_entered" from="Player/WinArea" to="Key" method="_on_win"]
 [connection signal="timeout" from="Player/StaminaBoost" to="Key" method="_on_stamina_boost_timeout"]
