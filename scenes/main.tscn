@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cfjit7ema1pr0"]
+[gd_scene load_steps=36 format=3 uid="uid://cfjit7ema1pr0"]
 
 [ext_resource type="Texture2D" uid="uid://cr68f5ycxecim" path="res://art/BackgroundGameplay.png" id="1_5j8mf"]
 [ext_resource type="Script" path="res://scenes/key.gd" id="1_flnan"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://l6lntkmm5vy5" path="res://audio/BOSS FIGHT.wav" id="3_5jvhv"]
 [ext_resource type="Texture2D" uid="uid://ce71up5nhrn8n" path="res://art/rope.png" id="3_kwbbp"]
 [ext_resource type="Texture2D" uid="uid://5o8miop8gg2g" path="res://art/keys.png" id="5_ecji2"]
+[ext_resource type="Script" path="res://scenes/pendulum_wiggle.gd" id="8_cjtjk"]
 [ext_resource type="Script" path="res://scenes/hold_bar.gd" id="9_yf12d"]
 [ext_resource type="Script" path="res://scenes/boss_exhaust.gd" id="10_qfkqb"]
 [ext_resource type="Script" path="res://scenes/sudden_pull.gd" id="10_s7g2n"]
@@ -115,6 +116,21 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0lun"]
 size = Vector2(172.807, 645.175)
 
+[sub_resource type="Animation" id="Animation_trd4x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_wxewf"]
 resource_name = "fade"
 length = 2.0
@@ -129,21 +145,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_trd4x"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n001n"]
@@ -209,11 +210,18 @@ scale = Vector2(3.10714, 3.10714)
 script = ExtResource("1_flnan")
 player_pull_force = 30
 boss_pull_force_based_on_distance = 0.08
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Key"]
+position = Vector2(-2.25288, -18.023)
+rotation = 0.313933
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("5_ecji2")
+offset = Vector2(167.357, 360.46)
+script = ExtResource("8_cjtjk")
+
+[node name="Marker2D" type="Marker2D" parent="Key/Sprite2D"]
+position = Vector2(275.256, 722.738)
+scale = Vector2(6.43679, 6.43679)
 
 [node name="Area2D" type="Area2D" parent="Key"]
 
